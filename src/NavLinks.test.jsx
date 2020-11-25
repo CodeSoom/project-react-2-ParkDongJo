@@ -18,7 +18,7 @@ describe('NavLinks', () => {
   it('renders header', () => {
     const { getByText } = renderNavLinks();
 
-    expect(getByText('ABOUT')).not.toBeNull();
-    expect(getByText('RESTAURANTS')).not.toBeNull();
+    expect(getByText('INTRO')).not.toBeNull();
+    expect(getByText('MY BOOK')).not.toBeNull();
   });
 });

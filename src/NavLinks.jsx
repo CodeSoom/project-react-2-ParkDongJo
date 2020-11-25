@@ -7,14 +7,14 @@ import styled from '@emotion/styled';
 export default function NavLinks() {
   return (
     <Layout>
-      <Link to="/curriculum">소개말</Link>
-      <Link to="/book">BOOK</Link>
+      <Link to="/intro">INTRO</Link>
+      <Link to="/lectures/:id">MY BOOK</Link>
     </Layout>
   );
 }
 
 const Layout = styled.div({
-  backgroundColor: '#EEE',
+  backgroundColor: '#FFF',
   display: 'flex',
   flex: 1,
   justifyContent: 'flex-end',
