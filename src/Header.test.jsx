@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { MemoryRouter } from 'react-router-dom';
+import ReactDOMServer from 'react-dom/server';
+
+import { MemoryRouter, Link } from 'react-router-dom';
 
 import { render, fireEvent } from '@testing-library/react';
 
@@ -8,7 +10,6 @@ import Header from './Header';
 
 describe('Header', () => {
   const dispatch = jest.fn();
-  const toggleDrawer = jest.fn();
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -17,34 +18,38 @@ describe('Header', () => {
   function renderHeader({ path }) {
     return render(
       <MemoryRouter initialEntries={[path]}>
-        <Header
-          toggleDrawer={toggleDrawer}
-        />
+        <Header />
       </MemoryRouter>,
     );
   }
 
   context('when path is ./', () => {
-    it('renders brand logo', () => {
-      const { getByText } = renderHeader({ path: '/' });
+    const path = '/';
 
-      expect(getByText('EatGo')).not.toBeNull();
+    it('renders home icon', () => {
+      const { container } = renderHeader({ path: '/' });
+
+      expect(container).toContainHTML('<span>WEB BOOK</span>');
     });
   });
 
-  context('when path is not ./about', () => {
-    it('renders open drawer button', () => {
-      const { getByText } = renderHeader({ path: '/about' });
+  context('when path is not ./intro', () => {
+    const path = '/intro';
 
-      expect(getByText('Open Drawer')).not.toBeNull();
+    it('renders intro icon', () => {
+      const { container } = renderHeader({ path });
+
+      expect(container).toContainHTML('<span>WEB BOOK ITRO</span>');
     });
+  });
 
-    it('click toggleOpen', () => {
-      const { getByText } = renderHeader({ path: '/about' });
+  context('when path is not ./lectures:id', () => {
+    const path = '/lectures/:id';
 
-      fireEvent.click(getByText('Open Drawer'));
+    it('renders lectures icon', () => {
+      const { container } = renderHeader({ path });
 
-      expect(toggleDrawer).toBeCalled();
+      expect(container).toContainHTML('<span>WEB BOOK LECTURE</span>');
     });
   });
 });
