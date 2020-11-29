@@ -10,7 +10,7 @@ import Header from './Header';
 import Drawer from './Drawer';
 import Footer from './Footer';
 import HomePage from './HomePage'
-import LecturesPage from './LecturesPage'
+import BookPage from './BookPage'
 import IntroPage from './IntroPage'
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/intro" component={IntroPage} />
-        <Route path="/lectures/:id" component={LecturesPage} />
+        <Route path="/lectures/:id" component={BookPage} />
       </Switch>
       <Drawer isOpen={isShowDrawer()} />
 
