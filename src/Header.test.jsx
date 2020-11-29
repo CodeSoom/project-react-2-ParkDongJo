@@ -44,7 +44,7 @@ describe('Header', () => {
   });
 
   context('when path is not ./lectures:id', () => {
-    const path = '/lectures/:id';
+    const path = '/lectures';
 
     it('renders lectures icon', () => {
       const { container } = renderHeader({ path });
