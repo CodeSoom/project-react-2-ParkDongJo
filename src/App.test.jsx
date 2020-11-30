@@ -25,18 +25,18 @@ describe('App', () => {
   });
 
   context('with path /intro', () => {
-    it('renders the lectures page', () => {
+    it('renders the intro page', () => {
       const { container } = renderApp({ path: '/intro' });
 
       expect(container).toHaveTextContent('Intro');
     });
   });
 
-  context('with path /lectures/:id', () => {
-    it('renders the lectures page', () => {
-      const { container } = renderApp({ path: '/lectures/1' });
+  context('with path /book', () => {
+    it('renders the book page', () => {
+      const { container } = renderApp({ path: '/book' });
 
-      expect(container).toHaveTextContent('Lectures');
+      expect(container).toHaveTextContent('Book');
     });
   });
 

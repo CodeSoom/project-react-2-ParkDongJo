@@ -7,12 +7,6 @@ import { render } from '@testing-library/react';
 import Header from './Header';
 
 describe('Header', () => {
-  const dispatch = jest.fn();
-
-  beforeEach(() => {
-    dispatch.clearAllMocks();
-  });
-
   function renderHeader({ path }) {
     return render(
       <MemoryRouter initialEntries={[path]}>
@@ -22,32 +16,26 @@ describe('Header', () => {
   }
 
   context('when path is ./', () => {
-    const path = '/';
-
     it('renders home icon', () => {
       const { container } = renderHeader({ path: '/' });
 
-      expect(container).toContainHTML('<span>WEB BOOK</span>');
+      expect(container).toContainHTML('<span>WEB BOOK</span>');
     });
   });
 
   context('when path is not ./intro', () => {
-    const path = '/intro';
-
     it('renders intro icon', () => {
-      const { container } = renderHeader({ path });
+      const { container } = renderHeader({ path: '/intro' });
 
-      expect(container).toContainHTML('<span>WEB BOOK ITRO</span>');
+      expect(container).toContainHTML('<span>INTRO</span>');
     });
   });
 
-  context('when path is not ./lectures:id', () => {
-    const path = '/lectures';
+  context('when path is not ./book', () => {
+    it('renders book icon', () => {
+      const { container } = renderHeader({ path: '/book' });
 
-    it('renders lectures icon', () => {
-      const { container } = renderHeader({ path });
-
-      expect(container).toContainHTML('<span>WEB BOOK LECTURE</span>');
+      expect(container).toContainHTML('<span>MY BOOK</span>');
     });
   });
 });

@@ -17,7 +17,7 @@ export default function App() {
   const location = useLocation();
 
   function isShowDrawer() {
-    return /\/lectures/g.test(location.pathname);
+    return /\/book/g.test(location.pathname);
   }
 
   return (
@@ -26,7 +26,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/intro" component={IntroPage} />
-        <Route path="/lectures/:id" component={BookPage} />
+        <Route path="/book" component={BookPage} />
       </Switch>
       <Drawer isOpen={isShowDrawer()} />
 

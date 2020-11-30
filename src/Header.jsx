@@ -10,11 +10,10 @@ export default function Header() {
   const location = useLocation();
 
   function renderHeaderIcon({ path }) {
-    // 우선 이 부분은 추후에 대응!
     return {
       '/': <Link to="/"><span>WEB BOOK</span></Link>,
-      '/intro': <Link to="/"><span>WEB BOOK ITRO</span></Link>,
-      '/lectures/:id': <Link to="/"><span>WEB BOOK LECTURE</span></Link>
+      '/intro': <Link to="/"><span>INTRO</span></Link>,
+      '/book': <Link to="/"><span>MY BOOK</span></Link>
     }[path]
   }
 
