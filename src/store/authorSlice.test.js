@@ -1,4 +1,4 @@
-import reducer from './bookSlice';
+import reducer from './authorSlice';
 
 describe('book reducer', () => {
   context('when previous state is undefined', () => {
