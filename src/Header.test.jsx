@@ -1,55 +1,54 @@
-import React from 'react';
+import React from 'react';
 
-import ReactDOMServer from 'react-dom/server';
+import { MemoryRouter } from 'react-router-dom';
 
-import { MemoryRouter, Link } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
-import { render, fireEvent } from '@testing-library/react';
+import Header from './Header';
 
-import Header from './Header';
+describe('Header', () => {
+  const dispatch = jest.fn();
 
-describe('Header', () => {
-  const dispatch = jest.fn();
+  beforeEach(() => {
+    dispatch.clearAllMocks();
+  });
 
-  beforeEach(() => {
-    dispatch.mockClear();
-  });
+  function renderHeader({ path }) {
+    return render(
+      <MemoryRouter initialEntries={[path]}>
+        <Header />
+      </MemoryRouter>,
+    );
+  }
 
-  function renderHeader({ path }) {
-    return render(
-      <MemoryRouter initialEntries={[path]}>
-        <Header />
-      </MemoryRouter>,
-    );
-  }
+  context('when path is ./', () => {
+    const path = '/';
 
-  context('when path is ./', () => {
-    const path = '/';
+    it('renders home icon', () => {
+      const { container } = renderHeader({ path: '/' });
 
-    it('renders home icon', () => {
-      const { container } = renderHeader({ path: '/' });
+      expect(container).toContainHTML('<span>WEB BOOK</span>');
+    });
+  });
 
-      expect(container).toContainHTML('<span>WEB BOOK</span>');
-    });
-  });
+  context('when path is not ./intro', () => {
+    const path = '/intro';
 
-  context('when path is not ./intro', () => {
-    const path = '/intro';
+    it('renders intro icon', () => {
+      const { container } = renderHeader({ path });
 
-    it('renders intro icon', () => {
-      const { container } = renderHeader({ path });
+      expect(container).toContainHTML('<span>WEB BOOK ITRO</span>');
+    });
+  });
 
-      expect(container).toContainHTML('<span>WEB BOOK ITRO</span>');
-    });
-  });
+  context('when path is not ./lectures:id', () => {
+    const path = '/lectures';
 
-  context('when path is not ./lectures:id', () => {
-    const path = '/lectures/:id';
+    it('renders lectures icon', () => {
+      const { container } = renderHeader({ path });
 
-    it('renders lectures icon', () => {
-      const { container } = renderHeader({ path });
-
-      expect(container).toContainHTML('<span>WEB BOOK LECTURE</span>');
-    });
-  });
+      expect(container).toContainHTML('<span>WEB BOOK LECTURE</span>');
+    });
+  });
 });
+
