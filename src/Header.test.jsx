@@ -1,10 +1,8 @@
 import React from 'react';
 
-import ReactDOMServer from 'react-dom/server';
+import { MemoryRouter } from 'react-router-dom';
 
-import { MemoryRouter, Link } from 'react-router-dom';
-
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Header from './Header';
 

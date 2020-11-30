@@ -17,7 +17,7 @@ describe('Footer', () => {
     it('renders drawer', () => {
       const { getByTestId } = renderDrawer({ isOpen: true });
 
-      expect(getByTestId('custom-drawer')).toHaveStyle('right: 0');
+      expect(getByTestId('custom-drawer')).toHaveStyle('width: 300px');
     });
   });
 
@@ -25,7 +25,7 @@ describe('Footer', () => {
     it('renders drawer', () => {
       const { getByTestId } = renderDrawer({ isOpen: false });
 
-      expect(getByTestId('custom-drawer')).toHaveStyle('right: -300px');
+      expect(getByTestId('custom-drawer')).toHaveStyle('width: 0');
     });
   });
 });
