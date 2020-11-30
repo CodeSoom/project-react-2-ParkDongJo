@@ -20,7 +20,7 @@ describe('PageText', () => {
 
   it('render page text component', () => {
     const text = '테스트 텍스트';
-    const { container, getByText } = renderPageTitle({ text: text });
+    const { container, getByText } = renderPageText({ text: text });
 
     expect(container).toHaveTextContent('Text');
     expect(getByText(text)).toBeInTheDocument();
