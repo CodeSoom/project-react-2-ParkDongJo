@@ -2,9 +2,9 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import PageImage from './PageImage';
+import BookPage from './BookPage';
 
-export default function LecturesPage() {
+export default function BookPage() {
   return (
     <Layout data-testid="lectures-layout">
       <h1>Lectures</h1>

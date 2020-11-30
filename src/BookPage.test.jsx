@@ -2,24 +2,24 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import LecturesPage from './LecturesPage';
+import BookPage from './BookPage';
 
-describe('LecturesPage', () => {
+describe('BookPage', () => {
 
-  function renderLectures() {
+  function renderBookPage() {
     return render(
-      <LecturesPage  />
+      <BookPage  />
     )
   };
 
   it('render contents page', () => {
-    const { container } = renderLectures();
+    const { container } = renderBookPage();
 
     expect(container).toHaveTextContent('Lectures');
   });
 
   it('container layout style', () => {
-    const { getByTestId } = renderLectures();
+    const { getByTestId } = renderBookPage();
     const element = getByTestId('lectures-layout')
 
     expect(element).toHaveStyle('width: 768px');
