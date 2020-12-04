@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import styled from '@emotion/styled';
 
@@ -8,12 +8,9 @@ import PageImage from './PageImage';
 import PageText from './PageText';
 import PageTitle from './PageTitle';
 
-import { get } from './utils';
-
-
 export default function BookContainer() {
 
-  const { opendPage } = useSelector((state) => state.book);
+  const opendPage = useSelector((state) => state.book.opendPage);
 
   return (
     <Layout data-testid="book-layout">

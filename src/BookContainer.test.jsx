@@ -16,7 +16,9 @@ describe('BookContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      opendPage: page
+      book: {
+        opendPage: page
+      }
     }));
   });
 
@@ -27,7 +29,7 @@ describe('BookContainer', () => {
   };
 
   context('when render book container', () => {
-    it('check text', () => {
+    it('check book page text', () => {
       const { container, getByText, queryByText } = renderBookContainer();
 
       expect(container).toHaveTextContent('BookContainer');
@@ -37,7 +39,7 @@ describe('BookContainer', () => {
       // expect(queryByText('일단 기다려봅시다.')).not.toBeNull();
     });
 
-    it('check container layout styㅋㅋle', () => {
+    it('check container layout style', () => {
       const { getByTestId } = renderBookContainer();
       const element = getByTestId('book-layout')
   
