@@ -4,51 +4,21 @@ import styled from '@emotion/styled';
 
 import DrawerTitle from './DrawerTitle';
 
-export default function Drawer({ isOpen }) {
+export default function Drawer({ isOpen, titleGroups }) {
   return (
     <Layout
       data-testid="custom-drawer"
       isOpen={isOpen}
     >
-      <DrawerTitle
-        mainTitle="Test1"
-        subTitles={[
-          {
-            idx: 1,
-            text: 'hello1'
-          },
-          {
-            idx: 2,
-            text: 'hello2'
-          },
-        ]}
-      />
-      <DrawerTitle
-        mainTitle="Test2"
-        subTitles={[
-          {
-            idx: 1,
-            text: 'hello1'
-          },
-          {
-            idx: 2,
-            text: 'hello2'
-          },
-        ]}
-      />
-      <DrawerTitle
-        mainTitle="Test3"
-        subTitles={[
-          {
-            idx: 1,
-            text: 'hello1'
-          },
-          {
-            idx: 2,
-            text: 'hello2'
-          },
-        ]}
-      />
+      {
+        titleGroups.map(({idx, mainTitle, subTitles}) => (
+          <DrawerTitle
+            key={idx}
+            mainTitle={mainTitle}
+            subTitles={subTitles}
+          />
+        ))
+      }
     </Layout>
   );
 }

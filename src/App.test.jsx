@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+
 import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
@@ -7,6 +9,12 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
   
   function renderApp({ path }) {
     return render(
@@ -32,9 +40,9 @@ describe('App', () => {
     });
   });
 
-  context('with path /book', () => {
+  context('with path /books', () => {
     it('renders the book page', () => {
-      const { container } = renderApp({ path: '/book' });
+      const { container } = renderApp({ path: '/books/1' });
 
       expect(container).toHaveTextContent('Book');
     });

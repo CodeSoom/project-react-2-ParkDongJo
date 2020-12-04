@@ -2,28 +2,36 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+
 import BookPage from './BookPage';
 
 describe('BookPage', () => {
+  const dispatch = jest.fn();
 
-  function renderBookPage() {
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
+  function renderBookPage({ path }) {
     return render(
-      <BookPage  />
+      <MemoryRouter initialEntries={[path]}>
+        <BookPage />
+      </MemoryRouter>
     )
   };
 
-  it('render contents page', () => {
-    const { container } = renderBookPage();
+  it('render book page', () => {
+    const params = { bookId: '1' };
+    const { container } =  render(
+      <BookPage params={params} />
+    )
+
+    expect(dispatch).toBeCalled();
 
     expect(container).toHaveTextContent('Book');
   });
-
-  it('container layout style', () => {
-    const { getByTestId } = renderBookPage();
-    const element = getByTestId('book-layout')
-
-    expect(element).toHaveStyle('width: 768px');
-    expect(element).toHaveStyle('margin: 0 auto');
-  });
-
 });

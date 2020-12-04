@@ -13,7 +13,7 @@ export default function Header() {
     return {
       '/': <Link to="/"><span>WEB BOOK</span></Link>,
       '/intro': <Link to="/"><span>INTRO</span></Link>,
-      '/book': <Link to="/"><span>MY BOOK</span></Link>
+      '/books/1': <Link to="/"><span>MY BOOK</span></Link>
     }[path]
   }
 
