@@ -40,9 +40,9 @@ describe('App', () => {
     });
   });
 
-  context('with path /book', () => {
+  context('with path /books', () => {
     it('renders the book page', () => {
-      const { container } = renderApp({ path: '/book' });
+      const { container } = renderApp({ path: '/books/1' });
 
       expect(container).toHaveTextContent('Book');
     });

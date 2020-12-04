@@ -28,7 +28,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/intro" component={IntroPage} />
-        <Route path="/book" component={BookPage} />
+        <Route path="/books/:bookId" component={BookPage} />
       </Switch>
       <Drawer isOpen={isShowDrawer()} />
 

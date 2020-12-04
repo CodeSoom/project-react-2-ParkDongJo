@@ -31,9 +31,9 @@ describe('Header', () => {
     });
   });
 
-  context('when path is not ./book', () => {
+  context('when path is not ./books', () => {
     it('renders book icon', () => {
-      const { container } = renderHeader({ path: '/book' });
+      const { container } = renderHeader({ path: '/books/1' });
 
       expect(container).toContainHTML('<span>MY BOOK</span>');
     });

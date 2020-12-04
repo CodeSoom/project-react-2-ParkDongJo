@@ -8,7 +8,7 @@ export default function NavLinks() {
   return (
     <Layout>
       <Link to="/intro">INTRO</Link>
-      <Link to="/lectures/:id">MY BOOK</Link>
+      <Link to="/books/1">MY BOOK</Link>
     </Layout>
   );
 }
