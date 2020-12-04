@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import styled from '@emotion/styled';
+import { useDispatch } from 'react-redux';
 
-import PageImage from './PageImage';
+import { useParams } from 'react-router-dom';
 
-export default function BookPage() {
+import BookContainer from './BookContainer';
+
+import {
+  loadCourse,
+  loadPage,
+} from './store/bookSlice';
+
+export default function BookPage({ params }) {
+  const { bookId } = params || useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadCourse({ bookId }));
+    dispatch(loadPage({ bookId, courseId: 1, pageId: 1 }));
+  }, []);
+
   return (
-    <Layout data-testid="book-layout">
+    <>
       <h1>Book</h1>
-      <PageImage
-        width={'100%'}
-        imageUrl={'https://webdev.imgix.net/web-bundles/hero.png?auto=format&fit=max&w=1730'}
-        altText={'default lecture'}
-      />
-    </Layout>
+      <BookContainer />
+    </>
   );
-}
-
-const Layout = styled.div({
-  width: '768px',
-  margin: '0 auto'
-});
+};
