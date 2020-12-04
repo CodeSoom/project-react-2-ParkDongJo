@@ -1,4 +1,4 @@
-export async function fetchCourses() {
+export async function fetchCourses({ bookId }) {
   return [];
 }
 

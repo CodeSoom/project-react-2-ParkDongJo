@@ -10,15 +10,16 @@ import {
 
 function axios() {
   const response = {
-    'https://api.com/books/1/courses' : { data : courses },
-    'https://api.com/books/1/courses/1/pages/1' : { data : page },
+    '/books/1/courses' : { data : courses },
+    '/books/1/courses/1/pages/1' : { data : page },
   }
 
   return {
     get: (url) => {
       return new Promise((resolve, reject) => {
         setTimeout(function() {
-          resolve(response[url])
+          var match = url.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
+          resolve(response[match[5]])
         }, 500);
       });
     }
