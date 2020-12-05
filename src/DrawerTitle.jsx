@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styled from '@emotion/styled';
 
-export default function DrawerTitle({ mainTitle, subTitles }) {
-  // const [isOpenSession, setIsOpenSession] = useState(false);
+import { Link } from 'react-router-dom';
 
-  // function handleClick() {
-  //   console.log('테스트 : ', isOpenSession);
-  //   setIsOpenSession(!isOpenSession);
-  // }
+
+export default function DrawerTitle({ mainTitle, subTitles, onClick }) {
 
   return (
     <>
@@ -16,8 +13,10 @@ export default function DrawerTitle({ mainTitle, subTitles }) {
         {mainTitle}
       </MainTitle>
       {
-        subTitles.map(({ idx, text }) => (
-          <SubTitle key={idx}>{text}</SubTitle>
+        subTitles.map(({ id, text }) => (
+          <button onClick={onClick}>
+            <SubTitle key={id}>{text}</SubTitle>
+          </button>
         ))
       }
     </>
