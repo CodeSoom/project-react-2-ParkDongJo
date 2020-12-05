@@ -1,6 +1,7 @@
 // ~/books/1/courses/1/pages/1
 const page = {
   id: 1,
+  bookId: 1,
   courseId: 1,
   pageId: 1,
   title: '시작하면서..',
