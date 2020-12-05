@@ -6,10 +6,16 @@ import Drawer from './Drawer';
 
 export function getBookTitleGroups(courses) {
   return courses.map(course => {
+    const { bookId, courseId, title, pages } = course;
+
     return {
-      idx: course.courseId,
-      mainTitle: course.title,
-      subTitles: course.pages.map(page => ({ idx: page.id, text: page.title }))
+      idx: courseId,
+      mainTitle: title,
+      subTitles: pages.map(page => ({
+        id: page.pageId,
+        text: page.title,
+        path: `/books/${bookId}/courses/${courseId}/pages/${page.pageId}`
+      })),
     }
   })
 }
