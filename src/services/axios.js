@@ -5,13 +5,19 @@
 
 import {
   courses,
-  page,
+  page1,
+  page2,
+  page3,
+  page4,
 } from '../../fixtures';
 
 function axios() {
   const response = {
     '/books/1/courses' : { data : courses },
-    '/books/1/courses/1/pages/1' : { data : page },
+    '/books/1/courses/1/pages/1' : { data : page1 },
+    '/books/1/courses/1/pages/2' : { data : page2 },
+    '/books/1/courses/2/pages/3' : { data : page3 },
+    '/books/1/courses/2/pages/4' : { data : page4 },
   }
 
   return {

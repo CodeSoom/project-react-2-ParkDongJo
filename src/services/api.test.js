@@ -5,7 +5,7 @@ import {
 
 import axios from 'axios';
 
-import { courses, page } from '../../fixtures';
+import { courses, page1 } from '../../fixtures';
 
 jest.mock('axios');
 
@@ -23,7 +23,7 @@ describe('api', () => {
   });
 
   it('fetchPage', async () => {
-    const resp = { data: page };
+    const resp = { data: page1 };
 
     axios.get.mockResolvedValue(resp);
 
@@ -33,6 +33,6 @@ describe('api', () => {
       pageId: 1,
     });
 
-    expect(data).toEqual(page);
+    expect(data).toEqual(page1);
   });
 });
