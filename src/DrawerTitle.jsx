@@ -2,21 +2,17 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { Link } from 'react-router-dom';
-
-
-export default function DrawerTitle({ mainTitle, subTitles, onClick }) {
-
+export default function DrawerTitle({ mainTitle, subTitles }) {
   return (
     <>
       <MainTitle>
         {mainTitle}
       </MainTitle>
       {
-        subTitles.map(({ id, text }) => (
-          <button onClick={onClick}>
-            <SubTitle key={id}>{text}</SubTitle>
-          </button>
+        subTitles.map(({ id, text, handleClick }) => (
+          <SubTitle key={id}>
+            <a onClick={handleClick}>{text}</a>
+          </SubTitle>
         ))
       }
     </>

@@ -3,9 +3,8 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import DrawerTitle from './DrawerTitle';
-import { getBookTitleGroups } from './DrawerContainer';
 
-import { courses } from '../fixtures';
+import { titleGroups } from '../fixtures';
 
 const FIRST_OBJECT_IDX = 0;
 
@@ -27,7 +26,7 @@ describe('DrawerTitle', () => {
   }
 
   context('render component', () => {
-    const { mainTitle, subTitles } = getBookTitleGroups(courses)[FIRST_OBJECT_IDX];
+    const { mainTitle, subTitles } = titleGroups[FIRST_OBJECT_IDX];
 
     it('show mainTitle & subTitles', () => {
       const { getByText } = renderDrawerTitle({

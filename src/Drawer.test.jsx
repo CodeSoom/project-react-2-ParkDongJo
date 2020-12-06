@@ -1,18 +1,22 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Drawer from './Drawer';
-import { getBookTitleGroups } from './DrawerContainer';
 
-import { courses } from './../fixtures';
+import { courses, titleGroups } from './../fixtures';
 
 describe('Drawer', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
 
   function renderDrawer({ isOpen }) {
     return render(
       <Drawer
-        titleGroups={getBookTitleGroups(courses)}
+        titleGroups={titleGroups}
         isOpen={isOpen}
       />,
     );
@@ -20,13 +24,14 @@ describe('Drawer', () => {
 
   context('when drawer opened', () => {
     const isOpen = true;
+
     it('renders drawer', () => {
       const { getByTestId } = renderDrawer({ isOpen });
 
       expect(getByTestId('custom-drawer')).toHaveStyle('width: 300px');
     });
 
-    it('show course title & page title', () => {
+    it('render course title & page title', () => {
       const { getByText } = renderDrawer({ isOpen });
 
       courses.forEach(course => {
