@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import BookContainer from './BookContainer';
 
-import { page } from './../fixtures';
+import { page1 } from './../fixtures';
 
 describe('BookContainer', () => {
   const dispatch = jest.fn();
@@ -17,7 +17,7 @@ describe('BookContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       book: {
-        opendPage: page
+        opendPage: page1
       }
     }));
   });

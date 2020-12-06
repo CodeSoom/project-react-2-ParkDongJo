@@ -21,8 +21,6 @@ export default function App() {
         <Route path="/intro" component={IntroPage} />
         <Route path="/books/:bookId" component={BookPage} />
       </Switch>
-      
-
       <Footer />
     </>
   )
