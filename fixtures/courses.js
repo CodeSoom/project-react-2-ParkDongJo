@@ -3,6 +3,7 @@
 const courses = [ 
   {
     id: 1,
+    bookId: 1,
     courseId: 1,
     title: 'javascript는 왜 이모양인가',
     pages: [
@@ -12,6 +13,7 @@ const courses = [
   },
   {
     id: 2,
+    bookId: 1,
     courseId: 2,
     title: 'typescript를 왜 선택했는가',
     pages: [

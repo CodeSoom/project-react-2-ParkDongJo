@@ -5,7 +5,7 @@ import reducer, {
 
 import {
   courses,
-  page
+  page1
 } from './../../fixtures'
 
 describe('book reducer', () => {
@@ -51,7 +51,7 @@ describe('book reducer', () => {
         },
       };
 
-      const state = reducer(initialState, setOpenedPage(page));
+      const state = reducer(initialState, setOpenedPage(page1));
 
       expect(state.opendPage.courseId).toEqual(1);
       expect(state.opendPage.pageId).toEqual(1);

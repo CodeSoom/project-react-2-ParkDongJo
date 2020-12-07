@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styled from '@emotion/styled';
 
 export default function DrawerTitle({ mainTitle, subTitles }) {
-  // const [isOpenSession, setIsOpenSession] = useState(false);
-
-  // function handleClick() {
-  //   console.log('테스트 : ', isOpenSession);
-  //   setIsOpenSession(!isOpenSession);
-  // }
-
   return (
     <>
       <MainTitle>
         {mainTitle}
       </MainTitle>
       {
-        subTitles.map(({ idx, text }) => (
-          <SubTitle key={idx}>{text}</SubTitle>
+        subTitles.map(({ id, text, handleClick }) => (
+          <SubTitle key={id}>
+            <a onClick={handleClick}>{text}</a>
+          </SubTitle>
         ))
       }
     </>

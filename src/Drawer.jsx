@@ -11,13 +11,14 @@ export default function Drawer({ isOpen, titleGroups }) {
       isOpen={isOpen}
     >
       {
-        titleGroups.map(({idx, mainTitle, subTitles}) => (
+        titleGroups.map(({idx, mainTitle, subTitles}) => {
+          return (
           <DrawerTitle
             key={idx}
             mainTitle={mainTitle}
             subTitles={subTitles}
           />
-        ))
+        )})
       }
     </Layout>
   );
