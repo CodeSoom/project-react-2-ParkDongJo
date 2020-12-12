@@ -2,22 +2,10 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-export default function PageTitle({ title }) {
+export default function PageTitle({ cssId, title }) {
   return (
-    <>
-      <Layout data-testid='title-layout'>
-        <h1>Title</h1>
-        <p>{title}</p>
-      </Layout>
-    </>
+    <li>
+      <a href={`${cssId}`}>{title}</a>
+    </li>
   );
 };
-
-const Layout = styled.div({
-  width: '768px',
-  '& p': {
-    fontSize: '18px',
-    fontWeight: '700',
-    fontColor: 'blue',
-  }
-});

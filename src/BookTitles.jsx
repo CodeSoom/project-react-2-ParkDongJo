@@ -2,9 +2,9 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import DrawerTitle from './DrawerTitle';
+import BookTitle from './BookTitle';
 
-export default function Drawer({ isOpen, titleGroups }) {
+export default function BookTitles({ isOpen, titleGroups }) {
   return (
     <Layout
       data-testid="custom-drawer"
@@ -13,7 +13,7 @@ export default function Drawer({ isOpen, titleGroups }) {
       {
         titleGroups.map(({idx, mainTitle, subTitles}) => {
           return (
-          <DrawerTitle
+          <BookTitle
             key={idx}
             mainTitle={mainTitle}
             subTitles={subTitles}

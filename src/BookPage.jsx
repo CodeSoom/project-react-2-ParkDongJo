@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import BookContainer from './BookContainer';
-
-import DrawerContainer from './DrawerContainer';
+import BookTitlesContainer from './BookTitlesContainer';
+import PageTitlesContainer from './PageTitlesContainer';
 
 import {
   loadCourse,
@@ -32,9 +32,9 @@ export default function BookPage({ params }) {
 
   return (
     <>
-      <h1>Book</h1>
+      <BookTitlesContainer />
       <BookContainer />
-      <DrawerContainer />
+      <PageTitlesContainer />
     </>
   );
 };

@@ -2,13 +2,13 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Drawer from './Drawer';
+import BookTitles from './BookTitles';
 
 import {
   loadPage,
 } from './store/bookSlice';
 
-export default function DrawerContainer() {
+export default function BookTitlesContainer() {
   const dispatch = useDispatch();
 
   const courses = useSelector((state) => state.book.courses);
@@ -35,7 +35,7 @@ export default function DrawerContainer() {
   return (
     <>
       {courses ? (
-        <Drawer
+        <BookTitles
           titleGroups={getBookTitleGroups(courses)}
           isOpen={true} />
       ): null}
