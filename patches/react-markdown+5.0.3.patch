@@ -1,0 +1,30 @@
+diff --git a/node_modules/react-markdown/lib/ast-to-react.js b/node_modules/react-markdown/lib/ast-to-react.js
+index fc97670..8ed1e32 100644
+--- a/node_modules/react-markdown/lib/ast-to-react.js
++++ b/node_modules/react-markdown/lib/ast-to-react.js
+@@ -85,6 +85,9 @@ function getNodeProps(node, key, opts, renderer, parent, index) {
+       break;
+ 
+     case 'heading':
++      if (node.depth === 2) {
++        props.elementId = node.children[0].value.replace(/\s/g, '-');
++      }
+       props.level = node.depth;
+       break;
+ 
+diff --git a/node_modules/react-markdown/lib/renderers.js b/node_modules/react-markdown/lib/renderers.js
+index 3e4d609..c4b05ac 100644
+--- a/node_modules/react-markdown/lib/renderers.js
++++ b/node_modules/react-markdown/lib/renderers.js
+@@ -70,7 +70,10 @@ function TableCell(props) {
+ }
+ 
+ function Heading(props) {
+-  return createElement("h".concat(props.level), getCoreProps(props), props.children);
++  return createElement(
++    "h".concat(props.level),
++    props.elementId ? {...getCoreProps(props), id: props.elementId } : getCoreProps(props),
++    props.children);
+ }
+ 
+ function List(props) {
