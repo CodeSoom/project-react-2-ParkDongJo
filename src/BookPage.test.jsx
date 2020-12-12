@@ -26,12 +26,8 @@ describe('BookPage', () => {
 
   it('render book page', () => {
     const params = { bookId: '1' };
-    const { container } =  render(
-      <BookPage params={params} />
-    )
+    render(<BookPage params={params} />)
 
     expect(dispatch).toBeCalled();
-
-    expect(container).toHaveTextContent('Book');
   });
 });

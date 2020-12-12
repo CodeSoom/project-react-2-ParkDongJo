@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "patch-package",
     "start": "webpack-dev-server",
     "test:unit": "jest",
     "coverage": "npm run test:unit -- --coverage",
@@ -38,8 +39,10 @@
     "@emotion/styled": "^11.0.0",
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.21.0",
+    "patch-package": "^6.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-markdown": "^5.0.3",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
