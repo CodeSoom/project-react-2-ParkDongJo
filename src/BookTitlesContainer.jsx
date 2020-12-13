@@ -34,11 +34,9 @@ export default function BookTitlesContainer() {
 
   return (
     <>
-      {courses ? (
-        <BookTitles
+      <BookTitles
           titleGroups={getBookTitleGroups(courses)}
           isOpen={true} />
-      ): null}
     </>
   );
 }
