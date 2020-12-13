@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import PageTitlesContainer from './PageTitlesContainer';
 import {
   loadCourse,
   loadPage,
+  setIsLoading,
 } from './store/bookSlice';
 
 const FIRST_OPENED_COURSE_ID = 1;
@@ -20,8 +21,11 @@ export default function BookPage({ params }) {
   const dispatch = useDispatch();
 
   const { bookId } = params || useParams();
+  const isLoading = useSelector((state) => state.book.isLoading);
 
   useEffect(() => {
+    dispatch(setIsLoading(true));
+
     dispatch(loadCourse({ bookId }));
     dispatch(loadPage({
       bookId,
@@ -32,9 +36,13 @@ export default function BookPage({ params }) {
 
   return (
     <>
-      <BookTitlesContainer />
-      <BookContainer />
-      <PageTitlesContainer />
+      {isLoading ? <div>{"loading..."}</div> : (
+        <>
+          <BookTitlesContainer />
+          <BookContainer />
+          <PageTitlesContainer />
+        </>
+      )}
     </>
   );
 };

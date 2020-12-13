@@ -15,6 +15,7 @@ const initialPageState = {
 const { actions, reducer } = createSlice({
   name: 'book',
   initialState: {
+    isLoading: false,
     bookId: 0,
     courses: [],
     opendPage: initialPageState
@@ -26,18 +27,29 @@ const { actions, reducer } = createSlice({
         courses,
       };
     },
-    setOpenedPage(state, { payload: opendPage }) {
+    setOpenedPage(state, { payload: { opendPage } }) {
+      console.log("테스트 setOpenedPage opendPage", opendPage)
+      // console.log("테스트 setOpenedPage isLoading", isLoading)
       return {
         ...state,
         opendPage,
+        isLoading: false,
       };
     },
+    setIsLoading(state, { payload: isLoading }) {
+      console.log("테스트 setIsLoading isLoading", isLoading)
+      return {
+        ...state,
+        isLoading,
+      };
+    }
   },
 });
 
 export const {
   setCourses,
   setOpenedPage,
+  setIsLoading,
 } = actions;
 
 export function loadCourse({ bookId }) {
@@ -49,8 +61,8 @@ export function loadCourse({ bookId }) {
 
 export function loadPage({ bookId, courseId, pageId }) {
   return async (dispatch) => {
-    const page = await fetchPage({ bookId, courseId, pageId });
-    dispatch(setOpenedPage(page));
+    const opendPage = await fetchPage({ bookId, courseId, pageId });
+    dispatch(setOpenedPage({ opendPage }));
   };
 }
 

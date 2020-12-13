@@ -11,6 +11,7 @@ import {
 describe('book reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
+      isLoading: false,
       bookId: 0,
       courses: [],
       opendPage: {
@@ -55,6 +56,18 @@ describe('book reducer', () => {
 
       expect(state.opendPage.courseId).toEqual(1);
       expect(state.opendPage.pageId).toEqual(1);
+    });
+  });
+
+  describe('setIsLoading', () => {
+    it('changes isLoading', () => {
+      const initialState = {
+        isLoading: false,
+      };
+
+      const state = reducer(initialState, setIsLoading(true));
+
+      expect(state.isLoading).toBe(true);
     });
   });
 });
