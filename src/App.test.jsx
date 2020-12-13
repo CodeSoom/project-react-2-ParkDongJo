@@ -42,9 +42,9 @@ describe('App', () => {
 
   context('with path /books', () => {
     it('renders the book page', () => {
-      const { container } = renderApp({ path: '/books/1' });
+      const { getByText } = renderApp({ path: '/books/1' });
 
-      expect(container).toHaveTextContent('Book');
+      expect(getByText("시작하면서..")).not.toBeNull();
     });
   });
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-export default function DrawerTitle({ mainTitle, subTitles }) {
+export default function BookTitle({ mainTitle, subTitles }) {
   return (
     <>
       <MainTitle>

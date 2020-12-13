@@ -4,11 +4,13 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import DrawerContainer from './DrawerContainer';
+import BookTitlesContainer from './BookTitlesContainer';
 
-import { courses } from './../fixtures';
+import { courses } from '../fixtures';
 
-describe('DrawerContainer', () => {
+const FIRST_OBJECT_IDX = 0;
+
+describe('BookTitlesContainer', () => {
   const dispatch = jest.fn();
   const getBookTitleGroups = jest.fn();
 
@@ -39,16 +41,16 @@ describe('DrawerContainer', () => {
     }));
   });
 
-  function renderDrawerContainer() {
+  function renderBookTitlesContainer() {
     return render(
-      <DrawerContainer />
+      <BookTitlesContainer />
     )
   };
 
   context('when render drawer container', () => {
 
-    it('check text in container', () => {
-      const { getByText } = renderDrawerContainer();
+    it('show text in container', () => {
+      const { getByText } = renderBookTitlesContainer();
 
       courses.forEach(course => {
         expect(getByText(course.title)).not.toBeNull();
@@ -58,46 +60,28 @@ describe('DrawerContainer', () => {
         expect(getByText(page.title)).not.toBeNull();
       })
     });
-
-    it('click subtitle(page title)', () => {
-      const { getByText } = renderDrawerContainer();
-
-      const { title } = courses[0].pages[0];
-
-      fireEvent.click(getByText(title));
-
-      expect(dispatch).toBeCalledWith({
-        type: 'book/setOpenedPage',
-        payload: {
-          pageId: 1,
-          courseId: 1,
-          title: '시작하면서..',
-          text: '#그래서? ##일단 기다려봅시다. 내용을 적어볼까요.',},
-      });
-    });
   });
 
   context('when run getBookTitleGroups()', () => {
     const { bookId, courseId, title, pages } = courses[0];
 
-    it('first mainTitle equal title of first courses', () => {
+    it('return mainTitle, it is equal to title of course', () => {
       const bookTitleGroups = getBookTitleGroups(courses);
+      const { mainTitle } = bookTitleGroups[FIRST_OBJECT_IDX];
 
-      expect(bookTitleGroups[0].mainTitle).toBe(title);
+      expect(mainTitle).toBe(title);
     });
 
-    it('first subTitles have { idx, title, path } of page', () => {
+    it('return subTitleGroups that contain subTitles of page', () => {
       const bookTitleGroups = getBookTitleGroups(courses);
+      const { subTitles } = bookTitleGroups[FIRST_OBJECT_IDX];
 
-      bookTitleGroups[0].subTitles.map(({ id, text, path, handleClick }, index) => {
+      subTitles.forEach(({ id, text, path }, index) => {
         const { pageId, title } = pages[index];
   
         expect(id).toBe(pageId);
         expect(text).toBe(title);
         expect(path).toBe(`/books/${bookId}/courses/${courseId}/pages/${pageId}`);
-
-        handleClick();
-        expect(dispatch).toBeCalled();
       });
     });
   });

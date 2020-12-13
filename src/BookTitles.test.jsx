@@ -2,20 +2,20 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import Drawer from './Drawer';
+import BookTitles from './BookTitles';
 
-import { courses, titleGroups } from './../fixtures';
+import { courses, titleGroups } from '../fixtures';
 
-describe('Drawer', () => {
+describe('BookTitles', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
     dispatch.mockClear();
   });
 
-  function renderDrawer({ isOpen }) {
+  function renderBookTitles({ isOpen }) {
     return render(
-      <Drawer
+      <BookTitles
         titleGroups={titleGroups}
         isOpen={isOpen}
       />,
@@ -26,13 +26,13 @@ describe('Drawer', () => {
     const isOpen = true;
 
     it('renders drawer', () => {
-      const { getByTestId } = renderDrawer({ isOpen });
+      const { getByTestId } = renderBookTitles({ isOpen });
 
       expect(getByTestId('custom-drawer')).toHaveStyle('width: 300px');
     });
 
     it('render course title & page title', () => {
-      const { getByText } = renderDrawer({ isOpen });
+      const { getByText } = renderBookTitles({ isOpen });
 
       courses.forEach(course => {
         expect(getByText(course.title)).not.toBeNull();
@@ -46,7 +46,7 @@ describe('Drawer', () => {
 
   context('when drawer closed', () => {
     it('renders drawer', () => {
-      const { getByTestId } = renderDrawer({ isOpen: false });
+      const { getByTestId } = renderBookTitles({ isOpen: false });
 
       expect(getByTestId('custom-drawer')).toHaveStyle('width: 0');
     });

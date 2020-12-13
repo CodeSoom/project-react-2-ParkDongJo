@@ -10,10 +10,9 @@ import { page1 } from './../fixtures';
 
 describe('BookContainer', () => {
   const dispatch = jest.fn();
-  const extractSubTitlesInPage = jest.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
@@ -21,15 +20,6 @@ describe('BookContainer', () => {
         opendPage: page1
       }
     }));
-
-    extractSubTitlesInPage.mockImplementation((pageText) => {
-      const titles = pageText.match(/##\D+?\n/gm);
-
-      return titles.map(title => {
-        return title.replace(/(##\s|##)/g, '')
-                    .replace(/\n/g, '');
-      });
-    });
   });
 
   function renderBookContainer() {
@@ -53,15 +43,6 @@ describe('BookContainer', () => {
   
       expect(element).toHaveStyle('width: 768px');
       expect(element).toHaveStyle('margin: 0 auto');
-    });
-  });
-
-  context('when run extractSubTitleInPage()', () => {
-    it('return matchedSubTitles',() => {
-      const subTitlesInPage = extractSubTitlesInPage(page1.text);
-
-      expect(subTitlesInPage).not.toBeNull();
-      expect(subTitlesInPage[0]).toBe('일단 기다려봅시다')
     });
   });
 });

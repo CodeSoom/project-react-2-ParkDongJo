@@ -2,34 +2,41 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import DrawerTitle from './DrawerTitle';
+import BookTitle from './BookTitle';
 
 import { titleGroups } from '../fixtures';
 
 const FIRST_OBJECT_IDX = 0;
 
-describe('DrawerTitle', () => {
-  const clickHandler = jest.fn();
+describe('BookTitle', () => {
+  const handleClick = jest.fn();
 
   beforeEach(() => {
-    clickHandler.mockClear();
+    handleClick.mockClear();
   });
 
-  function renderDrawerTitle({ mainTitle, subTitles }) {
+  function renderBookTitle({ mainTitle, subTitles }) {
     return render(
-      <DrawerTitle
+      <BookTitle
         mainTitle={mainTitle}
         subTitles={subTitles}
-        onClick={clickHandler}
       />,
     );
   }
 
   context('render component', () => {
-    const { mainTitle, subTitles } = titleGroups[FIRST_OBJECT_IDX];
+    const { mainTitle } = titleGroups[FIRST_OBJECT_IDX];
+    const subTitles = [
+      {
+        id: 1,
+        text: '배열',
+        path: `/books/1/courses/1/pages/1`,
+        handleClick: handleClick
+      }
+    ];
 
     it('show mainTitle & subTitles', () => {
-      const { getByText } = renderDrawerTitle({
+      const { getByText } = renderBookTitle({
         mainTitle: mainTitle,
         subTitles: subTitles
       });
@@ -39,14 +46,15 @@ describe('DrawerTitle', () => {
     });
   
     it('click text of subTitle', () => {
-      const { getByText } = renderDrawerTitle({
+      const { getByText } = renderBookTitle({
         mainTitle: mainTitle,
         subTitles: subTitles
       });
 
-      fireEvent.click(getByText(subTitles[FIRST_OBJECT_IDX].text));
-
-      expect(clickHandler).toBeCalled();
+      subTitles.forEach(({ text, handleClick }) => {
+        fireEvent.click(getByText(text));
+        expect(handleClick).toBeCalled();
+      });
     });
   });
 });
