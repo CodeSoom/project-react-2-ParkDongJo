@@ -28,8 +28,6 @@ const { actions, reducer } = createSlice({
       };
     },
     setOpenedPage(state, { payload: { opendPage } }) {
-      console.log("테스트 setOpenedPage opendPage", opendPage)
-      // console.log("테스트 setOpenedPage isLoading", isLoading)
       return {
         ...state,
         opendPage,
@@ -37,7 +35,6 @@ const { actions, reducer } = createSlice({
       };
     },
     setIsLoading(state, { payload: isLoading }) {
-      console.log("테스트 setIsLoading isLoading", isLoading)
       return {
         ...state,
         isLoading,
