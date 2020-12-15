@@ -6,7 +6,7 @@ import PageTitles from './PageTitles';
 
 export default function PageTitlesContainer() {
 
-  const opendPage = useSelector((state) => state.book.opendPage);
+  const openedPage = useSelector((state) => state.book.openedPage);
 
   function extractSubTitlesInPage(pageText) {
     const titles = pageText.match(/##\D+?\n/gm) || [];
@@ -29,7 +29,7 @@ export default function PageTitlesContainer() {
     <>
       <PageTitles 
         titles={getPageTitles(
-            extractSubTitlesInPage(opendPage.text)
+            extractSubTitlesInPage(openedPage.text)
           )}
       />
     </>

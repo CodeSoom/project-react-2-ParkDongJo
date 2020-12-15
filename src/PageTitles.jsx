@@ -1,12 +1,12 @@
 import React from 'react';
 
-import styled from '@emotion/styled';
-
 import PageTitle from './PageTitle';
+
+import styled from '@emotion/styled';
 
 export default function PageTitles({ titles }) {
   return (
-    <ul>
+    <Titles>
       {
         titles.map(({id, title, cssId}) => {
           return (
@@ -17,6 +17,12 @@ export default function PageTitles({ titles }) {
           />
         )})
       }
-    </ul>
+    </Titles>
   );
 }
+
+const Titles = styled.ul({
+  margin: 0,
+  padding: 0,
+  paddingLeft: 15,
+});

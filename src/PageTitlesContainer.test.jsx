@@ -17,7 +17,7 @@ describe('PageTitlesContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       book: {
-        opendPage: page1
+        openedPage: page1
       }
     }));
 
