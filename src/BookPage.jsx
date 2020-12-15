@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
+
+import styled from '@emotion/styled';
 
 import BookContainer from './BookContainer';
 import BookTitlesContainer from './BookTitlesContainer';
@@ -38,11 +40,43 @@ export default function BookPage({ params }) {
     <>
       {isLoading ? <div>{"loading..."}</div> : (
         <>
-          <BookTitlesContainer />
-          <BookContainer />
-          <PageTitlesContainer />
+          <WrapperLayout>
+            <RightFlexLayout>
+              <BookTitlesContainer />
+            </RightFlexLayout>
+            <MainFlexLayout>
+              <BookContainer />
+            </MainFlexLayout>
+            <LeftFlexLayout>
+              <PageTitlesContainer />
+            </LeftFlexLayout>
+          </WrapperLayout>
         </>
       )}
     </>
   );
 };
+
+const WrapperLayout = styled.div({
+  maxWidth: '1400px',
+  margin: '0 auto',
+  paddingTop: '40px',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+});
+  
+const RightFlexLayout = styled.div({
+  display: 'flex',
+  flex: '0 0 240px',
+});
+
+const MainFlexLayout = styled.div({
+  display: 'flex',
+  flex: '1 auto',
+});
+
+const LeftFlexLayout = styled.div({
+  display: 'flex',
+  flex: '0 0 240px',
+});

@@ -17,7 +17,7 @@ describe('BookContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       book: {
-        opendPage: page1
+        openedPage: page1
       }
     }));
   });
@@ -41,7 +41,7 @@ describe('BookContainer', () => {
       const { getByTestId } = renderBookContainer();
       const element = getByTestId('book-layout')
   
-      expect(element).toHaveStyle('width: 768px');
+      expect(element).toHaveStyle('width: 1400px');
       expect(element).toHaveStyle('margin: 0 auto');
     });
   });

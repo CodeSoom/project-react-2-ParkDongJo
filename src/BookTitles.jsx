@@ -25,13 +25,8 @@ export default function BookTitles({ isOpen, titleGroups }) {
 }
 
 const Layout = styled.div(({ isOpen }) => ({
-  width: isOpen ? '300px' : '0',
+  width: isOpen ? '100%' : '0',
   opacity: isOpen ? '1' : '0',
   backgroundColor: '#FFF',
   transition: 'all 0.3s ease-in-out',
-  position: 'absolute',
-  right: '0',
-  top: '10%',
-  borderLeft: 'solid 2px',
-  borderColor: '#EEE',
 }));
