@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 export default function NavLinks() {
   return (
     <Layout>
-      <Link to="/intro">INTRO</Link>
+      {/* <Link to="/intro">INTRO</Link> */}
       <Link to="/books/1">MY BOOK</Link>
     </Layout>
   );

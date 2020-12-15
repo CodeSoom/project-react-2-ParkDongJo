@@ -11,25 +11,28 @@ export default function Header() {
 
   function renderHeaderIcon({ path }) {
     return {
-      '/': <Link to="/"><span>WEB BOOK</span></Link>,
-      '/intro': <Link to="/"><span>INTRO</span></Link>,
-      '/books/1': <Link to="/"><span>MY BOOK</span></Link>
+      '/': <Link to="/"><Logo>WEB BOOK</Logo></Link>,
+      '/intro': <Link to="/"><Logo>WEB BOOK</Logo></Link>,
+      '/books/1': <Link to="/"><Logo>WEB BOOK</Logo></Link>
     }[path]
   }
 
   return (
     <Layout>
-      <Logo>
+      <LogoFlex>
         {location && renderHeaderIcon({
           path: location.pathname
         })}
-      </Logo>
+      </LogoFlex>
       <NavLinks />
     </Layout>
   );
 }
 
 const Layout = styled.header({
+  maxWidth: '1360px',
+  padding: '0 20px',
+  margin: '0 auto',
   backgroundColor: '#FFF',
   display: 'flex',
   height: '100%',
@@ -37,7 +40,7 @@ const Layout = styled.header({
   '& div': {
     fontSize: '1.5em',
     margin: 0,
-    padding: '1em .5em',
+    padding: '1em 0',
   },
   '& a': {
     color: '#555',
@@ -48,8 +51,14 @@ const Layout = styled.header({
   },
 });
 
-const Logo = styled.div({
+const LogoFlex = styled.div({
   display: 'flex',
   flex: 1,
   justifyContent: 'flex-start',
+});
+
+const Logo = styled.span({
+  backgroundColor: '#4B32C3',
+  color: '#FFF',
+  padding: '0.2em 0.5em',
 });

@@ -11,7 +11,7 @@ export default function Footer() {
 }
 
 const Layout = styled.footer({
-  backgroundColor: '#EEE',
+  backgroundColor: '#20232a',
   position: 'fixed',
   left: 0,
   bottom: 0,
