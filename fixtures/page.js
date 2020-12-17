@@ -5,7 +5,7 @@ export const page1 = {
   courseId: 1,
   pageId: 1,
   title: '시작하면서..',
-  text: '# 그래서?\n ## 일단 기다려봅시다\n *내용을 적어볼까요.*\n ## 어떡할까요\n',
+  text: '# 그래서?\n ## 일단 기다려봅시다\n *내용을 적어볼까요.*\n ## 어떡할까요\n ```const test = () => 2+2;```\n',
   opened: true,
 };
 

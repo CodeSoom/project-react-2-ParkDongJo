@@ -1,6 +1,7 @@
 import reducer, {
   setCourses,
   setOpenedPage,
+  setIsLoading,
 } from './bookSlice';
 
 import {
@@ -14,7 +15,7 @@ describe('book reducer', () => {
       isLoading: false,
       bookId: 0,
       courses: [],
-      opendPage: {
+      openedPage: {
         pageId: 0,
         courseId: 0,
         title: '',
@@ -44,7 +45,7 @@ describe('book reducer', () => {
   describe('setOpenedPage', () => {
     it('changes openedPage', () => {
       const initialState = {
-        opendPage: {
+        openedPage: {
           pageId: 0,
           courseId: 0,
           title: '',
@@ -52,10 +53,10 @@ describe('book reducer', () => {
         },
       };
 
-      const state = reducer(initialState, setOpenedPage(page1));
+      const state = reducer(initialState, setOpenedPage({ openedPage: page1 }));
 
-      expect(state.opendPage.courseId).toEqual(1);
-      expect(state.opendPage.pageId).toEqual(1);
+      expect(state.openedPage.courseId).toEqual(1);
+      expect(state.openedPage.pageId).toEqual(1);
     });
   });
 

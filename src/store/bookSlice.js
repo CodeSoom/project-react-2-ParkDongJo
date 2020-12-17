@@ -18,7 +18,7 @@ const { actions, reducer } = createSlice({
     isLoading: false,
     bookId: 0,
     courses: [],
-    opendPage: initialPageState
+    openedPage: initialPageState
   },
   reducers: {
     setCourses(state, { payload: courses }) {
@@ -27,10 +27,10 @@ const { actions, reducer } = createSlice({
         courses,
       };
     },
-    setOpenedPage(state, { payload: { opendPage } }) {
+    setOpenedPage(state, { payload: { openedPage } }) {
       return {
         ...state,
-        opendPage,
+        openedPage,
         isLoading: false,
       };
     },
@@ -58,8 +58,8 @@ export function loadCourse({ bookId }) {
 
 export function loadPage({ bookId, courseId, pageId }) {
   return async (dispatch) => {
-    const opendPage = await fetchPage({ bookId, courseId, pageId });
-    dispatch(setOpenedPage({ opendPage }));
+    const openedPage = await fetchPage({ bookId, courseId, pageId });
+    dispatch(setOpenedPage({ openedPage }));
   };
 }
 

@@ -8,13 +8,15 @@ export default function BookTitle({ mainTitle, subTitles }) {
       <MainTitle>
         {mainTitle}
       </MainTitle>
-      {
-        subTitles.map(({ id, text, handleClick }) => (
-          <SubTitle key={id}>
-            <a onClick={handleClick}>{text}</a>
-          </SubTitle>
-        ))
-      }
+      <SubTitles>
+        {
+          subTitles.map(({ id, text, handleClick }) => (
+            <SubTitle key={id}>
+              <a onClick={handleClick}>{text}</a>
+            </SubTitle>
+          ))
+        }
+      </SubTitles>
     </>
   );
 }
@@ -23,24 +25,32 @@ const MainTitle = styled.div({
   overflow: 'hidden',
   background: 'white',
   cursor: 'pointer',
-  fontWeight: '700',
+  fontWeight: '500',
   fontSize: '18px',
-  color: '#888',
+  color: '#393939',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
-  padding: '1em',
-  paddingLeft: '1.1em',
+  marginBottom: '8px',
+  paddingLeft: '20px',
 });
 
-const SubTitle = styled.div({
+const SubTitles = styled.ul({
+  marginBottom: '16px',
+  padding: '0 0',
+});
+
+const SubTitle = styled.li({
   overflow: 'hidden',
   background: 'white',
   cursor: 'pointer',
-  fontWeight: '700',
   fontSize: '14px',
-  color: '#888',
+  color: '#717171',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
-  padding: '1em',
+  padding: '4px 0',
   paddingLeft: '2.1em',
+  '& a:hover': {
+    color: '#4B32C3',
+    fontWeight: 500,
+  },
 });

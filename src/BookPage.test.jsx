@@ -24,7 +24,7 @@ describe('BookPage', () => {
         book: {
           isLoading: false,
           courses: courses,
-          opendPage: page1,
+          openedPage: page1,
         }
       }));
 
