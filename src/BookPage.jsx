@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
+import SpinLoading from './SpinLoading';
 import BookContainer from './BookContainer';
 import BookTitlesContainer from './BookTitlesContainer';
 import PageTitlesContainer from './PageTitlesContainer';
@@ -38,7 +39,7 @@ export default function BookPage({ params }) {
 
   return (
     <>
-      {isLoading ? <div>{"loading..."}</div> : (
+      {isLoading ? <SpinLoading /> : (
         <>
           <WrapperLayout>
             <RightFlexLayout>

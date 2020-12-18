@@ -26,7 +26,7 @@ function axios() {
         setTimeout(function() {
           var match = url.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
           resolve(response[match[5]])
-        }, 500);
+        }, 1000);
       });
     }
   };
