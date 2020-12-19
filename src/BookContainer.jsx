@@ -30,14 +30,18 @@ export default function BookContainer() {
 
   return (
     <Layout data-testid="book-layout">
-        <Heading>{openedPage.title}</Heading>
-        <ReactMarkdown 
-          source={openedPage.text} 
-          renderers={{
-            code: CodeBlock,
-            inlineCode: InlineCodeBlock
-          }}
-        />
+      {openedPage ? (
+        <>
+          <Heading>{openedPage.title}</Heading>
+          <ReactMarkdown 
+            source={openedPage.text} 
+            renderers={{
+              code: CodeBlock,
+              inlineCode: InlineCodeBlock
+            }}
+          />
+        </>
+      ) : null}
     </Layout>
   );
 }

@@ -44,9 +44,12 @@ describe('BookPage', () => {
         }
       }));
 
-      const { getByText } = render(<BookPage params={{ bookId: '1' }} />)
+      const { getByTestId } = render(<BookPage params={{ bookId: '1' }} />)
 
-      expect(getByText("loading...")).not.toBeNull();
+      const element = getByTestId('spin-loader')
+
+      expect(element).toHaveStyle('width: 150px');
+
     })
   });
 });

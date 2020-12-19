@@ -41,7 +41,7 @@ describe('BookContainer', () => {
       const { getByTestId } = renderBookContainer();
       const element = getByTestId('book-layout')
   
-      expect(element).toHaveStyle('width: 1400px');
+      expect(element).toHaveStyle('width: 100%');
       expect(element).toHaveStyle('margin: 0 auto');
     });
   });
