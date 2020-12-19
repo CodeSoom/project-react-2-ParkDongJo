@@ -14,7 +14,7 @@ describe('SpinLoading', () => {
 
     const element = getByTestId('spin-loader')
 
-    // spin loader의 가장 기본적인 style
+    // spin loader의 가장 기본적인 style 체크
     // 이 스타일이 아니면, spin이 아니다.
     expect(element).toHaveStyle('display: block');
     expect(element).toHaveStyle('position: relative');
