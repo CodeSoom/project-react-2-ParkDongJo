@@ -67,7 +67,7 @@ describe('PageTitlesContainer', () => {
       const subTitlesInPage = page1Titles.map(({ title }) => title)
       const pageTitles = getPageTitles(subTitlesInPage);
 
-      expect(pageTitles[0]).toBe(`#${page1Titles[0].replace(/\s/g, '-')}`);
+      expect(pageTitles[0].cssId).toBe(`${page1Titles[0].cssId.replace(/\s/g, '-')}`);
     });
   });
 });

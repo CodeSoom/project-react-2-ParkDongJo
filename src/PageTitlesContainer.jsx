@@ -18,6 +18,8 @@ export default function PageTitlesContainer() {
   }
 
   function getPageTitles(subTitlesInPage) {
+    if (!subTitlesInPage) return {};
+
     return subTitlesInPage.map((title, index) => ({
       id: index,
       title: title,
@@ -27,12 +29,11 @@ export default function PageTitlesContainer() {
 
   return (
     <>
-      <PageTitles 
+      {openedPage ? (<PageTitles 
         titles={getPageTitles(
             extractSubTitlesInPage(openedPage.text)
           )}
-      />
+      />) : null}
     </>
   );
 }
-
