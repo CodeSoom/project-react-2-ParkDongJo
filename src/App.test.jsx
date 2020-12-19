@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
@@ -8,12 +8,25 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+import { courses, page1 } from '../fixtures';
+
+jest.mock('react-redux');
+
 describe('App', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
-    dispatch.mockClear();
+    jest.clearAllMocks();
+
     useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      book: {
+        isLoading: false,
+        courses: courses,
+        openedPage: page1,
+      }
+    }));
   });
   
   function renderApp({ path }) {
@@ -22,7 +35,7 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     )
-  }
+  };
 
   context('with path /', () => {
     it('renders the App page', () => {
@@ -32,20 +45,11 @@ describe('App', () => {
     });
   });
 
-  context('with path /intro', () => {
-    it('renders the intro page', () => {
-      const { container } = renderApp({ path: '/intro' });
-
-      expect(container).toHaveTextContent('Intro');
-    });
-  });
-
   context('with path /books', () => {
     it('renders the book page', () => {
-      const { getByText } = renderApp({ path: '/books/1' });
+      const { container } = renderApp({ path: '/books/1' });
 
-      expect(getByText("시작하면서..")).not.toBeNull();
+      expect(container).toHaveTextContent('시작하면서..');
     });
   });
-
-})
+});

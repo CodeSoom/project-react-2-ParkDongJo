@@ -12,7 +12,6 @@ export default function Header() {
   function renderHeaderIcon({ path }) {
     return {
       '/': <Link to="/"><Logo>WEB BOOK</Logo></Link>,
-      '/intro': <Link to="/"><Logo>WEB BOOK</Logo></Link>,
       '/books/1': <Link to="/"><Logo>WEB BOOK</Logo></Link>
     }[path]
   }

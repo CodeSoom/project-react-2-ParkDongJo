@@ -17,25 +17,17 @@ describe('Header', () => {
 
   context('when path is ./', () => {
     it('renders home icon', () => {
-      const { container } = renderHeader({ path: '/' });
+      const { getByText  } = renderHeader({ path: '/' });
 
-      expect(container).toContainHTML('<span>WEB BOOK</span>');
-    });
-  });
-
-  context('when path is not ./intro', () => {
-    it('renders intro icon', () => {
-      const { container } = renderHeader({ path: '/intro' });
-
-      expect(container).toContainHTML('<span>INTRO</span>');
+      expect(getByText('WEB BOOK')).not.toBeNull();
     });
   });
 
   context('when path is not ./books', () => {
     it('renders book icon', () => {
-      const { container } = renderHeader({ path: '/books/1' });
+      const {getByText} = renderHeader({ path: '/books/1' });
 
-      expect(container).toContainHTML('<span>MY BOOK</span>');
+      expect(getByText('MY BOOK')).not.toBeNull();
     });
   });
 });
