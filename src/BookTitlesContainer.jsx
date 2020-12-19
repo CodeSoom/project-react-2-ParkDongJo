@@ -14,6 +14,8 @@ export default function BookTitlesContainer() {
   const courses = useSelector((state) => state.book.courses);
 
   function getBookTitleGroups(pCourses) {
+    if (!pCourses) return {};
+
     return pCourses.map(course => {
       const { bookId, courseId, title, pages } = course;
   
@@ -34,9 +36,10 @@ export default function BookTitlesContainer() {
 
   return (
     <>
-      <BookTitles
+      {courses ? (<BookTitles
           titleGroups={getBookTitleGroups(courses)}
-          isOpen={true} />
+          isOpen={true}
+      />) : null}
     </>
   );
 }
