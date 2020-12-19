@@ -25,10 +25,10 @@ describe('BookTitles', () => {
   context('when drawer opened', () => {
     const isOpen = true;
 
-    it('renders drawer', () => {
+    it('renders book titles', () => {
       const { getByTestId } = renderBookTitles({ isOpen });
 
-      expect(getByTestId('custom-drawer')).toHaveStyle('width: 300px');
+      expect(getByTestId('custom-drawer')).toHaveStyle('width: 100%');
     });
 
     it('render course title & page title', () => {
@@ -45,7 +45,7 @@ describe('BookTitles', () => {
   });
 
   context('when drawer closed', () => {
-    it('renders drawer', () => {
+    it('renders book titles', () => {
       const { getByTestId } = renderBookTitles({ isOpen: false });
 
       expect(getByTestId('custom-drawer')).toHaveStyle('width: 0');
