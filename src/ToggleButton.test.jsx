@@ -14,7 +14,7 @@ describe('ToggleButton', () => {
   function renderToggleButton({ selected }) {
     return render(
       <ToggleButton 
-        isSelected={selected}
+        selected={selected}
         toggleSelected={toggleSelected}
       />
     )
@@ -22,13 +22,13 @@ describe('ToggleButton', () => {
 
   context('when selected is true', () => {
     it('render ON text', () => {
-      const { getByText } = renderToggleButton({ selected: false });
+      const { getByText } = renderToggleButton({ selected: true });
 
       expect(getByText("ON")).not.toBeNull();
     });
 
     it('click toggleSelected', () => {
-      const { getByTestId } = renderToggleButton({ selected: false });
+      const { getByTestId } = renderToggleButton({ selected: true });
 
       fireEvent.click(getByTestId('toggle-button'));
 
@@ -38,7 +38,22 @@ describe('ToggleButton', () => {
 
   context('when selected is false', () => {
     it('render OFF text', () => {
-      const { getByText } = renderToggleButton({ selected: true });
+      const { getByText } = renderToggleButton({ selected: false });
+
+      expect(getByText("OFF")).not.toBeNull();
+    });
+  });
+
+  context('when value of selected change', () => {
+    it('ON >> OFF', () => {
+      const { rerender, getByText } = renderToggleButton({ selected: true });
+
+      expect(getByText("ON")).not.toBeNull();
+
+      rerender(<ToggleButton 
+        isSelected={false}
+        toggleSelected={toggleSelected}
+      />)
 
       expect(getByText("OFF")).not.toBeNull();
     });
