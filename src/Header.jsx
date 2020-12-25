@@ -36,7 +36,7 @@ const Layout = styled.header({
   display: 'flex',
   height: '100%',
   alignItems: 'center',
-  '& div': {
+  '& > div': {
     fontSize: '1.5em',
     margin: 0,
     padding: '1em 0',
@@ -57,7 +57,7 @@ const LogoFlex = styled.div({
 });
 
 const Logo = styled.span({
-  backgroundColor: '#4B32C3',
+  backgroundColor: '#002b49',
   color: '#FFF',
   padding: '0.2em 0.5em',
 });
