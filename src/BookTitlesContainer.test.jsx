@@ -27,11 +27,12 @@ describe('BookTitlesContainer', () => {
 
     getBookTitleGroups.mockImplementation(() => courses.map(course => {
       const { bookId, courseId, title, pages } = course;
+      const subTitles = JSON.parse(pages);
   
       return {
         idx: courseId,
         mainTitle: title,
-        subTitles: pages.map(page => ({
+        subTitles: subTitles.map(page => ({
           id: page.pageId,
           text: page.title,
           path: `/books/${bookId}/courses/${courseId}/pages/${page.pageId}`,
@@ -51,12 +52,13 @@ describe('BookTitlesContainer', () => {
 
     it('show text in container', () => {
       const { getByText } = renderBookTitlesContainer();
+      const subTitles = JSON.parse(courses[0].pages);
 
       courses.forEach(course => {
         expect(getByText(course.title)).not.toBeNull();
       });
 
-      courses[0].pages.forEach(page => {
+      subTitles.forEach(page => {
         expect(getByText(page.title)).not.toBeNull();
       })
     });
@@ -77,7 +79,7 @@ describe('BookTitlesContainer', () => {
       const { subTitles } = bookTitleGroups[FIRST_OBJECT_IDX];
 
       subTitles.forEach(({ id, text, path }, index) => {
-        const { pageId, title } = pages[index];
+        const { pageId, title } = JSON.parse(pages)[index];
   
         expect(id).toBe(pageId);
         expect(text).toBe(title);
