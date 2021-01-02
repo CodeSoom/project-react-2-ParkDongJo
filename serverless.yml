@@ -1,0 +1,32 @@
+service: roadmap-client
+
+useDotenv: true 
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev              # optional, default: dev
+  region: ap-northeast-2  # optional, default: us-east-1
+  memorySize: 128         # optional, in MB, default: 1024
+  timeout: 30             # optional, in seconds, default: 6
+  versionFunctions: false # optional, default: true
+
+functions:
+  webapp:
+    name: ${self:service}-${self:provider.stage}
+    handler: handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
+
+custom:
+  # serverless offline plugin setup
+  serverless-offline:
+    httpPort: 4000
+    websocketPort: 4001
+    lambdaPort: 4002
