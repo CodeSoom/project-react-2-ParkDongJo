@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {
-  BrowserRouter,
+  MemoryRouter,
 } from 'react-router-dom';
 
 import App from './App';
@@ -19,9 +19,9 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 ReactDOM.render(
   (
     <Provider store={store}>
-      <BrowserRouter>
+      <MemoryRouter>
         <App />
-      </BrowserRouter>
+      </MemoryRouter>
     </Provider>
   ),
   document.getElementById('app'),

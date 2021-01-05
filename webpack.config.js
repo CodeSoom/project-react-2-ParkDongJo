@@ -1,17 +1,18 @@
-const path = require('path');
+const { merge } = require('webpack-merge');
 
-module.exports = {
-  entry: path.resolve(__dirname, 'src/index.jsx'),
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
+const commonConfig = require('./webpack.common');
+
+const productionConfig = require('./webpack.prod');
+
+const developmentConfig = require('./webpack.dev');
+
+module.exports = env => {
+  switch(env) {
+    case 'development':
+      return merge(commonConfig, developmentConfig);
+    case 'production':
+      return merge(commonConfig, productionConfig);
+    default:
+      throw new Error('No matching configuration was found!');
   }
-};
+}
