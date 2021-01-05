@@ -4,11 +4,13 @@
   "description": "",
   "scripts": {
     "postinstall": "patch-package",
-    "start": "webpack-dev-server --config webpack.config.js && node ./server.js",
+    "start": "webpack-dev-server --config webpack.config.js",
     "test:unit": "jest",
     "coverage": "npm run test:unit -- --coverage",
     "lint": "eslint --ext js,jsx .",
     "build": "webpack --config webpack.config.js",
+    "deploy:dev": "webpack --env development && aws s3 sync ./dist s3://www-dev.loadmap.pro",
+    "deploy:prod": "webpack --env production && aws s3 sync ./dist s3://www.loadmap.pro"
   },
   "keywords": [],
   "author": "",
@@ -43,7 +45,6 @@
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "@reduxjs/toolkit": "^1.4.0",
-    "aws-serverless-express": "^3.4.0",
     "axios": "^0.21.0",
     "patch-package": "^6.2.2",
     "react": "^16.13.1",
@@ -52,6 +53,6 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
+    "redux-thunk": "^2.3.0"
   }
 }
