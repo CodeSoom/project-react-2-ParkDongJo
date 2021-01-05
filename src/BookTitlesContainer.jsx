@@ -18,11 +18,12 @@ export default function BookTitlesContainer() {
 
     return pCourses.map(course => {
       const { bookId, courseId, title, pages } = course;
+      const subTitles = JSON.parse(pages);
   
       return {
         idx: courseId,
         mainTitle: title,
-        subTitles: pages.map(page => ({
+        subTitles: subTitles.map(page => ({
           id: page.pageId,
           text: page.title,
           path: `/books/${bookId}/courses/${courseId}/pages/${page.pageId}`,

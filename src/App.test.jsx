@@ -41,7 +41,7 @@ describe('App', () => {
     it('renders the App page', () => {
       const { container } = renderApp({ path: '/' });
 
-      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('고민된다');
     });
   });
 

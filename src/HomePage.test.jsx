@@ -12,12 +12,6 @@ describe('HomePage', () => {
     )
   }
 
-  it('render home page', () => {
-    const { container } = renderHome();
-
-    expect(container).toHaveTextContent('Home');
-  })
-
   it('container layout style', () => {
     const { getByTestId } = renderHome();
     const element = getByTestId('home-layout')

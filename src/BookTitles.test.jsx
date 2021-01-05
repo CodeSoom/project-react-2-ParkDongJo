@@ -33,12 +33,13 @@ describe('BookTitles', () => {
 
     it('render course title & page title', () => {
       const { getByText } = renderBookTitles({ isOpen });
+      const subTitles = JSON.parse(courses[0].pages);
 
       courses.forEach(course => {
         expect(getByText(course.title)).not.toBeNull();
       });
 
-      courses[0].pages.forEach(page => {
+      subTitles.forEach(page => {
         expect(getByText(page.title)).not.toBeNull();
       })
     });
