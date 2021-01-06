@@ -11,23 +11,59 @@ export default function HomePage() {
       <MainContainer>
         <LoadWay></LoadWay>
       </MainContainer>
+      <TypingContainer>
+        <p>Welcome to CSS Learning.</p>
+      </TypingContainer>
       <IntroList>
         <IntroRow>
-          <IntroTitle>잘모르겠다</IntroTitle>
+          <IntroTitle>고민된다</IntroTitle>
           <IntroText>개발을 하기 위한 기초적인 지식이나 도구 사용법</IntroText>
         </IntroRow>
         <IntroRow>
-          <IntroTitle>고민된다</IntroTitle>
+          <IntroTitle>아무것</IntroTitle>
           <IntroText>우리가 사용하는 Frameworks, SDK, Lib</IntroText>
         </IntroRow>
         <IntroRow>
-          <IntroTitle>시간이없다</IntroTitle>
+          <IntroTitle>잘모르겠다</IntroTitle>
           <IntroText>우리 팀의 생생한 개발 히스토리/블로그</IntroText>
         </IntroRow>
       </IntroList>
     </Layout>
   );
 }
+
+
+const TypingAni = keyframes`
+  from {
+    width: 0;
+  }
+  to {
+    width: 360px;
+  }
+`
+
+const BlinkAni = keyframes`
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: #000;
+  }
+`
+
+const TypingContainer = styled.div({
+  width: '100%',
+  height: '300px',
+  display: 'flex',
+  alignContent: 'center',
+  justifyContent: 'center',
+  '& p' :{
+    animation: `${TypingAni} 2s steps(24), ${BlinkAni} 0.5s infinite alternate`,
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    borderRight: '3px solid #000'
+  }
+})
 
 const Layout = styled.div({
   width: '768px',
