@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { keyframes } from "@emotion/react";
 
 import Footer from './Footer';
+import ITyped from './ITyped';
 
 export default function HomePage() {
   return (
@@ -12,7 +13,27 @@ export default function HomePage() {
         <LoadWay></LoadWay>
       </MainContainer>
       <TypingContainer>
-        <p>Welcome to CSS Learning.</p>
+        <ITyped
+          loop={true}
+          placeholder={false}
+          strings={['테스트한다 테스트를 해본다', '테스트를 해본다']}
+          typeSpeed={100}
+          backSpeed={100}
+          startDelay={100}
+          backDelay={250}
+        />
+      </TypingContainer>
+      <TypingContainer>
+        <ITyped
+          loop={true}
+          placeholder={false}
+          strings={['테스트한다 테스트를 해본다', '테스트를 해본다']}
+          typeSpeed={100}
+          backSpeed={100}
+          startDelay={100}
+          backDelay={250}
+          disableBackTyping={true}
+        />
       </TypingContainer>
       <IntroList>
         <IntroRow>
@@ -32,37 +53,11 @@ export default function HomePage() {
   );
 }
 
-
-const TypingAni = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: 360px;
-  }
-`
-
-const BlinkAni = keyframes`
-  from {
-    border-color: transparent;
-  }
-  to {
-    border-color: #000;
-  }
-`
-
 const TypingContainer = styled.div({
   width: '100%',
-  height: '300px',
   display: 'flex',
   alignContent: 'center',
   justifyContent: 'center',
-  '& p' :{
-    animation: `${TypingAni} 2s steps(24), ${BlinkAni} 0.5s infinite alternate`,
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    borderRight: '3px solid #000'
-  }
 })
 
 const Layout = styled.div({
