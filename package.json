@@ -4,11 +4,11 @@
   "description": "",
   "scripts": {
     "postinstall": "patch-package",
-    "start": "webpack-dev-server --config webpack.config.js",
+    "start": "webpack-dev-server --env development",
     "test:unit": "jest",
     "coverage": "npm run test:unit -- --coverage",
     "lint": "eslint --ext js,jsx .",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack --env development",
     "deploy:dev": "webpack --env development && aws s3 sync ./dist s3://www-dev.loadmap.pro",
     "deploy:prod": "webpack --env production && aws s3 sync ./dist s3://www.loadmap.pro"
   },
@@ -46,6 +46,7 @@
     "@emotion/styled": "^11.0.0",
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.21.0",
+    "ityped": "^1.0.3",
     "patch-package": "^6.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

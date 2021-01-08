@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { keyframes } from "@emotion/react";
 
 import Footer from './Footer';
+import ITyped from './ITyped';
 
 export default function HomePage() {
   return (
@@ -11,23 +12,53 @@ export default function HomePage() {
       <MainContainer>
         <LoadWay></LoadWay>
       </MainContainer>
+      <TypingContainer>
+        <ITyped
+          loop={true}
+          placeholder={false}
+          strings={['테스트한다 테스트를 해본다', '테스트를 해본다']}
+          typeSpeed={100}
+          backSpeed={100}
+          startDelay={100}
+          backDelay={250}
+        />
+      </TypingContainer>
+      <TypingContainer>
+        <ITyped
+          loop={true}
+          placeholder={false}
+          strings={['테스트한다 테스트를 해본다', '테스트를 해본다']}
+          typeSpeed={100}
+          backSpeed={100}
+          startDelay={100}
+          backDelay={250}
+          disableBackTyping={true}
+        />
+      </TypingContainer>
       <IntroList>
         <IntroRow>
-          <IntroTitle>잘모르겠다</IntroTitle>
+          <IntroTitle>고민된다</IntroTitle>
           <IntroText>개발을 하기 위한 기초적인 지식이나 도구 사용법</IntroText>
         </IntroRow>
         <IntroRow>
-          <IntroTitle>고민된다</IntroTitle>
+          <IntroTitle>아무것</IntroTitle>
           <IntroText>우리가 사용하는 Frameworks, SDK, Lib</IntroText>
         </IntroRow>
         <IntroRow>
-          <IntroTitle>시간이없다</IntroTitle>
+          <IntroTitle>잘모르겠다</IntroTitle>
           <IntroText>우리 팀의 생생한 개발 히스토리/블로그</IntroText>
         </IntroRow>
       </IntroList>
     </Layout>
   );
 }
+
+const TypingContainer = styled.div({
+  width: '100%',
+  display: 'flex',
+  alignContent: 'center',
+  justifyContent: 'center',
+})
 
 const Layout = styled.div({
   width: '768px',
